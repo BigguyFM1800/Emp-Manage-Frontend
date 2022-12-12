@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="loginbox">
+      <img src="../../assets/user.png" class="avatar" alt="user" />
+      <h1>Login Here</h1>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <p>Username</p>
+        <input type="text" placeholder="Enter Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"/>
+
+        <div *ngIf="submitted && f['username'].errors">
+          <div *ngIf="f['username'].errors['required']" style="color:red">Username is required</div>
+          <div *ngIf="f['username'].errors['minlength']" style="color:red">
+            Username must be at least 6 characters
+          </div>
+          <div *ngIf="f['username'].errors['maxlength']" style="color:red">
+            Username must not exceed 20 characters
+          </div>
+        </div>
+     
+        <p>Password</p>
+        <input type="password" placeholder="Enter Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
+
+        <div *ngIf="submitted && f['password'].errors">
+          <div *ngIf="f['password'].errors['required']" style="color:red">Password is required</div>
+          <div *ngIf="f['password'].errors['minlength']" style="color:red">
+            Password must be at least 6 characters
+          </div>
+          <div style="color:red" *ngIf="f['password'].errors['maxlength']">
+            Username must not exceed 40 characters
+          </div>
+        </div>
+     
+        <input type="submit" value="Login" (click)="onSubmit()"  />
+        <a routerLink="/register">Don't have an account?</a>
+      </form>
+    </div>
+  </div>
+

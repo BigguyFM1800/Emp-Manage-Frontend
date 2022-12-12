@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="loginbox">
+      <img src="../../assets/user.png" class="avatar" alt="user" />
+      <h1>Register Here</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p>Username</p>
+        <input type="text" placeholder="Enter Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"/>
+
+        <div *ngIf="submitted && f['username'].errors">
+          <div *ngIf="f['username'].errors['required']" style="color:red">Username is required</div>
+          <div *ngIf="f['username'].errors['minlength']" style="color:red">
+            Username must be at least 6 characters
+          </div>
+          <div *ngIf="f['username'].errors['maxlength']" style="color:red">
+            Username must not exceed 20 characters
+          </div>
+        </div>
+   
+        <p>Password</p>
+        <input type="password" formControlName="password"placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
+
+        <div *ngIf="submitted && f['password'].errors">
+          <div *ngIf="f['password'].errors['required']" style="color:red">Password is required</div>
+          <div *ngIf="f['password'].errors['minlength']" style="color:red">
+            Password must be at least 6 characters
+          </div>
+          <div *ngIf="f['password'].errors['maxlength']" style="color:red">
+            Username must not exceed 40 characters
+          </div>
+        </div>
+      
+        <p>Confirm Password</p>
+        <input type="password" formControlName="confirmPassword" placeholder="Retype Password" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"/>
+
+        <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+        <div *ngIf="f['confirmPassword'].errors['required']" style="color:red">
+          Confirm Password is required
+        </div>
+        <div *ngIf="f['confirmPassword'].errors['matching']" style="color:red">
+          Confirm Password does not match
+        </div>
+      </div>
+  
+      <input type="submit" value="Register" (click)="onSubmit()"/>
+        <a routerLink="/login" >Already have an account?</a>
+      </form>
+    </div>
+  </div>
+

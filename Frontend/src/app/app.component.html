@@ -1,0 +1,19 @@
+
+<div *ngIf="user">
+<nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar">
+    <div class="toolbar" role="banner">
+     <div class="col-sm-6">
+       <!-- <h4><i class="bi bi-house-fill house-icon" routerLink='/home'></i></h4> -->
+       <span class="employee" routerLink='/home'><b>Employee Management</b></span>
+     </div>
+     <div class="col-sm-6">
+       <span><i class="bi bi-person user-icon"></i></span>
+       <span class="employee"><b>{{user.username}}</b></span>
+       <span><i class="bi bi-power user-icon" (click)="logout()"></i></span>
+     </div>
+   </div>
+</nav>
+</div>
+
+
+<router-outlet></router-outlet>
