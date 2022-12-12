@@ -2,7 +2,6 @@ const express = require("express") // Express is for building the Rest apis
 const cors = require("cors") // cors provides Express middleware to enable CORS with various options.
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
-require('dotenv').config()
  
 const app = express()
 const corsOptions = {
@@ -13,7 +12,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 const db = require("./models/index")
-const drUrl = ""
+const drUrl = require("./Config/db.config")
 mongoose.connect(drUrl.url, 
   {useNewUrlParser: true}).then(() => {
   console.log("Connected to the database")
